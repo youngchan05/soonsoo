@@ -356,7 +356,7 @@ export default function BottomSheetFilter({
         </div>
 
         {/* footer */}
-        <div className="sticky inset-x-0 bottom-0 border-t bg-[var(--surface-1)] px-5 py-4">
+        <div className="sticky inset-x-0 bottom-0 px-5 py-4">
           <button
             onClick={apply}
             className="h-12 w-full rounded-xl text-white font-medium transition active:scale-95"

@@ -62,7 +62,7 @@ export default function MobileHeader({
         role="dialog"
         aria-modal="true"
         className={[
-          "fixed inset-0 z-50 transition",
+          "fixed inset-0 z-100 transition",
           open ? "pointer-events-auto" : "pointer-events-none",
         ].join(" ")}
       >

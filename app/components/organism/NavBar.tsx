@@ -60,7 +60,6 @@ export default function NavBar() {
             borderColor: "var(--line-soft)",
             boxShadow: "0 6px 20px rgba(0,0,0,.04)",
             height: "64px",
-            borderRadius: "var(--radius-lg)",
           }}
         >
           {/* 액티브 하이라이트 (연한 배경) */}
