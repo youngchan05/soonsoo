@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import "../globals.css";
-import Header from "../components/organism/Header/Header";
-import QueryProvider from "../providers/QueryProvider";
-import NavBar from "../components/organism/NavBar";
+import "../../globals.css";
+import QueryProvider from "@/app/providers/QueryProvider";
+import LayoutDetail from "@/app/components/organism/LayoutDetail";
 
 export const metadata: Metadata = {
   title: "soonsoo flower shop",
@@ -22,10 +21,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[var(--surface-1)] pb-10">
-        <Header />
-        <QueryProvider>{children}</QueryProvider>
-        <NavBar />
+      <body className="min-h-screen bg-[color-mix(in_oklab,var(--surface-1)_86%,white)]">
+        <QueryProvider>
+          <LayoutDetail title="Cart">{children}</LayoutDetail>
+        </QueryProvider>
+        {/* <Footer /> */}
       </body>
     </html>
   );

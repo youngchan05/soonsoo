@@ -1,13 +1,11 @@
 "use client";
 
 import * as React from "react";
-import CartBadgeButton from "../../molecule/CartBadgeButton";
 import {
   IconHamburger,
   IconClose,
   IconHome,
   IconShop,
-  IconUser,
 } from "../../../icons/icon";
 
 type NavItem = { label: string; href: string; icon?: React.ReactNode };
@@ -45,7 +43,7 @@ export default function MobileHeader({
         ].join(" ")}
       >
         <div className="h-[56px] px-3 pt-[env(safe-area-inset-top)] flex items-center justify-between">
-          {/* 왼쪽 햄버거 */}
+          {/* 햄버거 버튼 */}
           <button
             type="button"
             aria-label="메뉴 열기"
@@ -57,19 +55,19 @@ export default function MobileHeader({
         </div>
       </div>
 
-      {/* 풀스크린 드로어 */}
+      {/* 드로어 */}
       <div
         role="dialog"
         aria-modal="true"
         className={[
-          "fixed inset-0 z-100 transition",
+          "fixed inset-0 z-[100] transition",
           open ? "pointer-events-auto" : "pointer-events-none",
         ].join(" ")}
       >
         {/* Dim */}
         <div
           className={[
-            "absolute inset-0 bg-black/35 transition-opacity",
+            "absolute inset-0 bg-black/40 transition-opacity duration-300",
             open ? "opacity-100" : "opacity-0",
           ].join(" ")}
           onClick={() => setOpen(false)}
@@ -84,61 +82,65 @@ export default function MobileHeader({
             open ? "translate-x-0" : "-translate-x-full",
           ].join(" ")}
         >
-          {/* 상단 브랜드 영역 */}
-          <div className="h-[64px] px-4 pt-[env(safe-area-inset-top)] flex items-center justify-between border-b border-[var(--line-soft)] bg-[var(--natural-50)] shadow-sm">
-            <div className="flex items-center gap-2">
-              <span className="text-[18px] font-heading font-semibold text-[var(--natural-700)]">
-                SOONSOO
-              </span>
-            </div>
+          {/* 브랜드 */}
+          <div className="relative h-[64px] flex items-center justify-center border-b border-[var(--line-soft)] bg-[var(--natural-50)] shadow-sm">
+            <span className="text-[18px] font-heading font-semibold text-[var(--natural-700)]">
+              SOONSOO
+            </span>
             <button
               type="button"
               aria-label="닫기"
-              className="w-10 h-10 grid place-items-center rounded-xl active:scale-95 transition"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 grid place-items-center rounded-xl active:scale-95 transition text-[var(--stone-600)] hover:text-[var(--natural-700)]"
               onClick={() => setOpen(false)}
             >
               <IconClose />
             </button>
           </div>
 
-          {/* 네비게이션 리스트 */}
-          <nav className="px-2 py-3 font-body space-y-1">
+          {/* 네비게이션 */}
+          <nav className="px-3 py-4 font-body space-y-1">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] text-[var(--stone-700)] transition relative group"
+                className="flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] text-[var(--stone-700)] hover:bg-[var(--natural-100)] hover:text-[var(--natural-700)] transition"
               >
-                {/* 좌측 인디케이터 */}
-                <span className="absolute left-0 top-0 h-full w-1 rounded-r bg-transparent group-hover:bg-[var(--terra-400)] transition" />
-                {/* 라벨 */}
-                <span className="group-hover:translate-x-1 transition">
-                  {item.label}
-                </span>
+                {item.icon && (
+                  <span className="text-[var(--stone-600)] group-hover:text-[var(--natural-600)]">
+                    {item.icon}
+                  </span>
+                )}
+                <span>{item.label}</span>
               </a>
             ))}
 
+            {/* 계정 */}
             <div className="mt-4 border-t border-[var(--line-soft)] pt-3">
               <a
                 href={accountHref}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] text-[var(--stone-700)] hover:bg-[var(--natural-100)] transition"
+                className="flex items-center gap-3 rounded-lg px-3 py-3 text-[15px] text-[var(--stone-700)] hover:bg-[var(--natural-100)] hover:text-[var(--natural-700)] transition"
               >
                 마이페이지
               </a>
             </div>
           </nav>
 
-          {/* 하단 브랜드/푸터 */}
-          <div className="absolute bottom-0 w-full px-4 py-4 border-t border-[var(--line-soft)] text-[13px] text-[var(--text-mute)] bg-[var(--surface-1)]">
-            <p className="mb-2 font-heading text-[14px] text-[var(--natural-700)]">
-              🌸 Bloom with SOONSOO
-            </p>
+          {/* 푸터 */}
+          <div className="absolute bottom-0 w-full px-4 py-4 border-t border-[var(--line-soft)] text-[12px] text-[var(--text-mute)] bg-[var(--surface-1)]">
             <div className="flex justify-between">
-              <a href="/support">고객센터</a>
-              <a href="/terms">이용약관</a>
-              <a href="https://instagram.com" target="_blank">
+              <a href="/support" className="hover:underline">
+                고객센터
+              </a>
+              <a href="/terms" className="hover:underline">
+                이용약관
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                className="hover:underline"
+              >
                 Instagram
               </a>
             </div>

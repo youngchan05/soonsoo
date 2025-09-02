@@ -180,12 +180,12 @@ export default function BottomSheetFilter({
 
         {/* header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--line-soft)]">
-          <h3 className="text-lg font-semibold text-[var(--natural-700)]">
+          <h3 className="text-lg font-semibold text-[var(--ink-900)]">
             Filter
           </h3>
           <button
             onClick={reset}
-            className="text-[14px] font-medium text-[var(--terra-500)] hover:text-[var(--terra-600)] transition"
+            className="text-[14px] font-medium text-[var(--natural-500)] hover:text-[var(--natural-600)] transition"
           >
             Reset All
           </button>
@@ -209,7 +209,7 @@ export default function BottomSheetFilter({
                       "h-10 rounded-full border px-4 text-[14px] transition active:scale-95",
                       active
                         ? "bg-[var(--natural-600)] text-white shadow-md"
-                        : "bg-[var(--surface-3)] text-[var(--stone-700)]",
+                        : "bg-[var(--surface-3)] text-[var(--ink-700)] hover:border-[var(--natural-200)]",
                     ].join(" ")}
                     style={{
                       borderColor: active ? "transparent" : "var(--line)",
@@ -313,7 +313,7 @@ export default function BottomSheetFilter({
 
           {/* Color */}
           <Section title="Color">
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 gap-3">
               {COLOR_SWATCHES.map((c) => {
                 const active = draftColors.includes(c.id);
                 return (
@@ -361,7 +361,7 @@ export default function BottomSheetFilter({
             onClick={apply}
             className="h-12 w-full rounded-xl text-white font-medium transition active:scale-95"
             style={{
-              background: "var(--natural-700)",
+              background: "var(--natural-600)",
               boxShadow: "var(--shadow-card)",
             }}
           >
@@ -383,7 +383,7 @@ function Section({
 }) {
   return (
     <section className="mt-4">
-      <h4 className="mb-2 text-[15px] font-semibold text-[var(--natural-700)]">
+      <h4 className="mb-2 text-[15px] font-semibold text-[var(--ink-900)]">
         {title}
       </h4>
       {children}

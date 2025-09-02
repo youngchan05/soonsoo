@@ -1,5 +1,7 @@
 "use client";
 
+import CartItem from "@/app/components/molecule/CartItem";
+import { IconEmpty } from "@/app/icons/icon";
 import { supabaseBrowser } from "@/app/lib/supabaseClient";
 import { useEffect, useMemo, useState } from "react";
 
@@ -178,128 +180,86 @@ export default function CartPage() {
 
   // (나머지 렌더는 동일)
   return (
-    <main className="mx-auto w-full max-w-[1248px] px-4 py-10">
-      <h1 className="text-2xl font-semibold">장바구니</h1>
-
+    <main className="mx-auto w-full max-w-[1248px] px-4 pb-28 bg-[var(--surface-1)]">
       {!loading && rows.length === 0 && (
-        <div className="mt-8 rounded-xl border bg-white p-6 text-center text-neutral-600">
-          장바구니가 비어 있어요.{" "}
-          <a href="/products" className="text-[#6B7A46] underline">
+        <div className="mt-20 text-center">
+          <IconEmpty className="w-20 h-20 mb-6" />
+          <p className="text-[var(--stone-600)] mb-6">
+            장바구니가 비어 있어요 🌸
+          </p>
+          <a
+            href="/products"
+            className="inline-block rounded-lg bg-[var(--natural-700)] px-6 py-3 text-white text-sm font-medium hover:bg-[var(--natural-600)] transition"
+          >
             상품 보러가기
           </a>
         </div>
       )}
 
       {rows.length > 0 && (
-        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px]">
-          <section className="space-y-3">
+        <>
+          {/* 상품 리스트 */}
+          <section className="space-y-3 mt-[30px]">
             {rows.map(({ product, qty, subtotal }) => (
-              <div
+              <CartItem
                 key={product.id}
-                className="flex gap-4 rounded-2xl border bg-white p-4"
-              >
-                <div className="h-24 w-32 overflow-hidden rounded-xl bg-neutral-100">
-                  {product.thumbnail_url ? (
-                    <img
-                      src={product.thumbnail_url}
-                      alt={product.name}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-neutral-400 text-sm">
-                      이미지 없음
-                    </div>
-                  )}
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-[15px] font-medium">{product.name}</h3>
-                  <p className="mt-1 text-sm text-neutral-600">
-                    리드타임 {product.lead_time_days}일
-                  </p>
-
-                  <div className="mt-3 flex flex-wrap items-center gap-3">
-                    {/* 수량 */}
-                    <div className="flex items-center rounded-xl border">
-                      <button
-                        className="px-3 py-2 text-lg"
-                        onClick={() => setQty(product.id, qty - 1)}
-                        aria-label="minus"
-                      >
-                        −
-                      </button>
-                      <input
-                        value={qty}
-                        onChange={(e) =>
-                          setQty(product.id, Number(e.target.value))
-                        }
-                        className="h-10 w-14 border-x text-center outline-none"
-                        inputMode="numeric"
-                      />
-                      <button
-                        className="px-3 py-2 text-lg"
-                        onClick={() => setQty(product.id, qty + 1)}
-                        aria-label="plus"
-                      >
-                        ＋
-                      </button>
-                    </div>
-
-                    <div className="ml-auto text-right">
-                      <div className="text-sm text-neutral-600">
-                        단가 {formatKRW(product.price)}
-                      </div>
-                      <div className="text-base font-semibold">
-                        소계 {formatKRW(subtotal)}
-                      </div>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => remove(product.id)}
-                    className="mt-2 text-sm text-neutral-500 hover:underline"
-                  >
-                    삭제
-                  </button>
-                </div>
-              </div>
+                product={product}
+                qty={qty}
+                subtotal={subtotal}
+                remove={remove}
+                setQty={setQty}
+              />
             ))}
 
-            <div className="flex justify-between">
+            <div className="flex justify-between pt-2">
               <button
                 onClick={clearAll}
-                className="text-sm text-neutral-500 hover:underline"
+                className="text-[12px] text-[var(--stone-500)] hover:text-[var(--terra-500)] hover:underline"
               >
                 전체 삭제
               </button>
               <a
                 href="/products"
-                className="text-sm text-[#6B7A46] hover:underline"
+                className="text-[12px] text-[var(--natural-600)] hover:underline"
               >
                 계속 쇼핑
               </a>
             </div>
           </section>
 
-          {/* 합계/CTA */}
-          <aside className="h-fit rounded-2xl border bg-white p-5">
-            <h2 className="text-lg font-semibold">주문 요약</h2>
-            <div className="mt-3 flex justify-between text-sm">
-              <span>상품 합계</span>
-              <span>{formatKRW(total)}</span>
+          {/* 주문 상세 내역 */}
+          <section className="mt-8 rounded-xl border border-[var(--line-soft)] bg-[var(--surface-2)] p-5">
+            <h2 className="text-base font-semibold text-[var(--natural-700)] mb-4">
+              주문 상세 내역
+            </h2>
+            <div className="space-y-2 text-sm text-[var(--stone-700)]">
+              <div className="flex justify-between">
+                <span>상품 합계</span>
+                <span>{formatKRW(total)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>배송비</span>
+                <span>{formatKRW(0)}</span>
+              </div>
             </div>
-            {/* 배송비/할인 등은 추후 */}
-            <div className="mt-3 border-t pt-3 flex justify-between text-base font-semibold">
+            <div className="mt-3 border-t border-[var(--line-soft)] pt-3 flex justify-between text-sm font-semibold text-[var(--stone-800)]">
               <span>총 결제금액</span>
               <span>{formatKRW(total)}</span>
             </div>
-            <button
-              onClick={checkout}
-              className="mt-4 h-12 w-full rounded-xl bg-[#6B7A46] text-white hover:bg-[#5F6E3F]"
-            >
-              주문하기
-            </button>
-          </aside>
-        </div>
+          </section>
+
+          {/* 하단 고정 Checkout 버튼 */}
+          <div className="fixed bottom-0 left-0 bottom-[20px] right-0 ">
+            <div className="mx-auto flex max-w-[1248px] items-center justify-end px-4">
+              <button
+                onClick={checkout}
+                className="w-full h-11 rounded-lg bg-[var(--natural-700)] px-6 text-white text-sm font-medium shadow-[var(--shadow-soft)] hover:bg-[var(--natural-600)] transition"
+              >
+                Checkout
+              </button>
+            </div>
+          </div>
+        </>
       )}
     </main>
   );

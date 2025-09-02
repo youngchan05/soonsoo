@@ -42,11 +42,19 @@ export default function ProductGridInfinite({
 
   if (error) {
     return (
-      <section className="rounded-2xl border bg-white p-6">
-        <h2 className="text-lg font-semibold">Products</h2>
-        <p className="mt-2 text-sm text-neutral-600">
+      <section className="rounded-xl border border-[var(--line-soft)] bg-[var(--surface-2)] p-6 shadow-[var(--shadow-soft)] text-center">
+        <h2 className="text-[16px] font-semibold text-[var(--natural-700)]">
+          Products
+        </h2>
+        <p className="mt-2 text-[13px] text-[var(--stone-600)]">
           상품을 불러오지 못했습니다.
         </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 inline-block rounded-lg bg-[var(--natural-700)] px-4 py-2 text-white text-sm font-medium hover:bg-[var(--natural-600)] transition"
+        >
+          다시 시도
+        </button>
       </section>
     );
   }

@@ -34,81 +34,81 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #111111;
 
-    /* 🌿 Natural Green (Main brand) */
-    --natural-50: #f5f8f4;
-    --natural-100: #e9f0e5;
-    --natural-200: #d5e3ce;
-    --natural-300: #b9cfb0;
-    --natural-400: #9eb894;
-    --natural-500: #7f9d76; /* base */
-    --natural-600: #6c8763; /* 버튼/포커스 기본 */
-    --natural-700: #586d51;
-    --natural-800: #435340;
-    --natural-900: #2d372b;
+    /* 🌿 Natural Green (Main brand – 차분한 민트 그린 계열) */
+    --natural-50: #f7fbfa;
+    --natural-100: #e6f3f0;
+    --natural-200: #cce7e0;
+    --natural-300: #a3d2c7;
+    --natural-400: #7bb9ac;
+    --natural-500: #5aa392; /* base */
+    --natural-600: #478679; /* 버튼/포커스 */
+    --natural-700: #386b60;
+    --natural-800: #275048;
+    --natural-900: #183530;
 
-    /* 🪨 Stone (Neutral support) */
-    --stone-50: #fdfcf9;
-    --stone-100: #f6f4ef;
-    --stone-200: #ebe6dc;
-    --stone-300: #d8d1c1;
-    --stone-400: #c0b79f;
-    --stone-500: #a89e87; /* 중립 베이스 */
-    --stone-600: #8d8470;
-    --stone-700: #726b5b;
-    --stone-800: #5a5549;
-    --stone-900: #3f3b34;
+    /* 🪨 Stone (Neutral – 모던 그레이 계열) */
+    --stone-50: #fafafa;
+    --stone-100: #f4f4f5;
+    --stone-200: #e4e4e7;
+    --stone-300: #d4d4d8;
+    --stone-400: #a1a1aa;
+    --stone-500: #71717a; /* 중립 베이스 */
+    --stone-600: #52525b;
+    --stone-700: #3f3f46;
+    --stone-800: #27272a;
+    --stone-900: #18181b;
 
-    /* 🧡 Terra (Warm accent) */
-    --terra-50: #fff9f5;
-    --terra-100: #fbe8df;
-    --terra-200: #f6d0bf;
-    --terra-300: #eab193;
-    --terra-400: #d88c66;
-    --terra-500: #c06a3d; /* 따뜻한 포인트 */
-    --terra-600: #a55532;
-    --terra-700: #87462a;
-    --terra-800: #6b3822;
-    --terra-900: #4c2616;
+    /* 🧡 Terra (Warm accent – 살짝 톤다운된 코랄/브릭) */
+    --terra-50: #fff9f7;
+    --terra-100: #ffe9e3;
+    --terra-200: #fecfc2;
+    --terra-300: #f9a896;
+    --terra-400: #f07266;
+    --terra-500: #e14d3a; /* 따뜻한 포인트 */
+    --terra-600: #c63e2d;
+    --terra-700: #a33227;
+    --terra-800: #7c2620;
+    --terra-900: #561a18;
 
-    /* 💜 Accent (Plum/Violet – CTA, 인터랙션) */
-    --accent-50: #f2edff;
-    --accent-100: #e7dcff;
-    --accent-200: #d0bfff;
-    --accent-300: #b296ff;
-    --accent-400: #8f70e8;
-    --accent-500: #5b2faf; /* 주요 CTA */
-    --accent-600: #4c2693;
-    --accent-700: #43227f;
-    --accent-800: #382166;
-    --accent-900: #2a184d;
+    /* 💙 Accent (Cool Blue – CTA, 인터랙션) */
+    --accent-50: #f0f9ff;
+    --accent-100: #e0f2fe;
+    --accent-200: #bae6fd;
+    --accent-300: #7dd3fc;
+    --accent-400: #38bdf8;
+    --accent-500: #0ea5e9; /* 주요 CTA */
+    --accent-600: #0284c7;
+    --accent-700: #0369a1;
+    --accent-800: #075985;
+    --accent-900: #0c4a6e;
 
     /* Neutrals & surfaces */
-    --text-strong: #1e1e1e;
-    --text: #2a2a2a;
-    --text-mute: #6b6b6b;
+    --text-strong: #111111;
+    --text: #333333;
+    --text-mute: #6b7280;
 
-    --surface-1: #fffdf8; /* 기본 페이지 배경 */
-    --surface-2: #f8f6ef; /* 카드/블록 배경 */
+    --surface-1: #ffffff; /* 기본 페이지 배경 */
+    --surface-2: #f9fafb; /* 카드/블록 배경 */
     --surface-3: #ffffff;
 
-    --line: #eaeaea; /* 얇은 보더 */
-    --line-soft: #e6e1d9; /* 섹션 구분 */
+    --line: #e5e7eb; /* 얇은 보더 */
+    --line-soft: #f1f5f9; /* 섹션 구분 */
 
     /* Semantic */
-    --success: #5b8c51;
-    --warning: #e3a43e;
-    --danger: #ce3b3b;
+    --success: #22c55e;
+    --warning: #eab308;
+    --danger: #ef4444;
 
     /* Radii / Shadows */
     --radius-sm: 12px;
     --radius-md: 16px;
     --radius-lg: 24px;
 
-    --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.08);
-    --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.1);
+    --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.06);
+    --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.08);
 
     /* Gradients */
     --natural-grad: radial-gradient(
