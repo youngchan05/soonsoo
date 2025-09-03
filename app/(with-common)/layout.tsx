@@ -17,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap"
           rel="stylesheet"
-        />
+        /> */}
       </head>
       <body className="min-h-screen bg-[var(--surface-1)] pb-10">
         <Header />
