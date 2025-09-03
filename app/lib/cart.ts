@@ -10,38 +10,38 @@ export type CartItem = {
 
 const KEY = "cart:v1";
 
-export function readCart(): CartItem[] {
+export const readCart = (): CartItem[] => {
   if (typeof window === "undefined") return [];
   try {
     return JSON.parse(localStorage.getItem(KEY) || "[]");
   } catch {
     return [];
   }
-}
+};
 
-export function writeCart(items: CartItem[]) {
+export const writeCart = (items: CartItem[]) => {
   if (typeof window === "undefined") return;
   localStorage.setItem(KEY, JSON.stringify(items));
   // 헤더/다른 탭 동기화용 이벤트
   window.dispatchEvent(new CustomEvent("cart:changed"));
-}
+};
 
-function sameKey(a: CartItem, b: CartItem) {
+export const sameKey = (a: CartItem, b: CartItem) => {
   return (
     a.productId === b.productId &&
     JSON.stringify(a.options || {}) === JSON.stringify(b.options || {})
   );
-}
+};
 
-export function addToCart(newItem: CartItem) {
+export const addToCart = (newItem: CartItem) => {
   const cart = readCart();
   const i = cart.findIndex((c) => sameKey(c, newItem));
   if (i >= 0) cart[i].qty += newItem.qty;
   else cart.push(newItem);
   writeCart(cart);
   return cart;
-}
+};
 
-export function cartCount() {
+export const cartCount = () => {
   return readCart().reduce((sum, it) => sum + (Number(it.qty) || 0), 0);
-}
+};
