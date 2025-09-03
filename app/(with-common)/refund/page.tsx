@@ -1,7 +1,7 @@
 "use client";
 
+import { BRAND, OPERATOR, POLICY_EFFECTIVE } from "@/app/config/legal";
 import Link from "next/link";
-import { BRAND, OPERATOR, POLICY_EFFECTIVE } from "../legal/config"; // 경로: app/(with-common)/legal/config.ts
 
 export default function RefundPolicyPage() {
   return (
