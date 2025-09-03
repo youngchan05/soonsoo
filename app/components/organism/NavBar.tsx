@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconHome, IconShop, IconUser } from "../../icons/icon";
+import { IconHome, IconShop, IconUser } from "../../icons/Icon";
 import CartBadgeButton from "../molecule/CartBadgeButton";
 import { haptics } from "../../utils/haptics";
 

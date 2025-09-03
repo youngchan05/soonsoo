@@ -6,7 +6,7 @@ import {
   IconClose,
   IconHome,
   IconShop,
-} from "../../../icons/icon";
+} from "../../../icons/Icon";
 
 type NavItem = { label: string; href: string; icon?: React.ReactNode };
 

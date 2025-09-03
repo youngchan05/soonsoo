@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { IconBackThin } from "@/app/icons/icon";
+import { IconBackThin } from "@/app/icons/Icon";
 
 type Props = {
   title?: string;

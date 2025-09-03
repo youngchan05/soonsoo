@@ -1,6 +1,6 @@
 "use client";
 
-import { IconCart } from "@/app/icons/icon";
+import { IconCart } from "@/app/icons/Icon";
 import * as React from "react";
 
 type Props = {
