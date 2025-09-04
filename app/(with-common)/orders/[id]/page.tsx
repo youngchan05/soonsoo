@@ -2,7 +2,7 @@ import { supabaseAdmin, supabaseServer } from "@/app/lib/supabaseServer";
 
 export const dynamic = "force-dynamic";
 
-export default async function OrderDetail({
+export default async function page({
   params,
   searchParams,
 }: {

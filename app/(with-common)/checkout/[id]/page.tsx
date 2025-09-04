@@ -3,13 +3,14 @@ import CheckoutClient from "./client";
 
 export const dynamic = "force-dynamic";
 
-export default async function CheckoutPage({
+export default async function page({
   params,
   searchParams,
 }: {
   params: { id: string };
   searchParams?: { orderNo?: string };
 }) {
+  // --- 주문 조회 ---
   const sbAdmin = supabaseAdmin();
   const { data: order, error } = await sbAdmin
     .from("orders")
@@ -19,17 +20,20 @@ export default async function CheckoutPage({
     .eq("id", params.id)
     .single();
 
-  if (error || !order)
+  if (error || !order) {
     return <div className="p-6">주문을 찾을 수 없습니다.</div>;
+  }
 
-  // 접근 가드
+  // --- 접근 가드 (로그인 사용자 or 주문번호 접근 허용) ---
   const sbServer = await supabaseServer();
   const { data: userData } = await sbServer.auth
     .getUser()
     .catch(() => ({ data: { user: null } as any }));
+
   const isOwner = !!userData?.user?.id && order.user_id === userData.user.id;
   const byOrderNo =
     !!searchParams?.orderNo && searchParams.orderNo === order.order_no;
+
   if (!isOwner && !byOrderNo) {
     return (
       <div className="p-6">
@@ -38,6 +42,7 @@ export default async function CheckoutPage({
     );
   }
 
+  // --- UI ---
   return (
     <main className="mx-auto w-full max-w-[720px] px-4 py-10">
       <h1 className="text-2xl font-semibold">체크아웃</h1>
@@ -52,7 +57,8 @@ export default async function CheckoutPage({
           total={order.total_amount}
         />
       </section>
-      {/* 주문 요약 렌더는 그대로 */}
+
+      {/* 주문 요약 섹션 추가 가능 */}
     </main>
   );
 }
