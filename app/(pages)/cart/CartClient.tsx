@@ -1,7 +1,7 @@
 "use client";
 
 import CartItem from "@/app/components/molecule/CartItem";
-import { IconEmpty } from "@/app/icons/Icon";
+import { IconEmpty } from "@/icons/Icon";
 import { supabaseBrowser } from "@/app/lib/supabaseClient";
 import { useEffect, useMemo, useState } from "react";
 

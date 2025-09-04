@@ -3,7 +3,7 @@
 import Link from "next/link";
 import * as React from "react";
 import { ProductColor } from "../../types/type";
-import { HeartIcon } from "@/app/icons/Icon";
+import { HeartIcon } from "@/icons/Icon";
 
 type Product = {
   id: string;

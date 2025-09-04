@@ -1,6 +1,6 @@
 "use client";
 
-import { IconSearch, IconSliders } from "@/app/icons/Icon";
+import { IconSearch, IconSliders } from "@/icons/Icon";
 import * as React from "react";
 
 type Props = {

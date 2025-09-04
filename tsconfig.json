@@ -24,7 +24,7 @@
       "@/components/*": ["./components/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/actions/*": ["./src/actions/*"],
-      "@/icon/*": ["./src/icons/*"]
+      "@/icons/*": ["./app/icons/*"] // ✅ 추가
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
