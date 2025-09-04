@@ -166,7 +166,7 @@ export function IconBackThin(props: React.SVGProps<SVGSVGElement>) {
       width={props.width ?? 24}
       height={props.height ?? 24}
       viewBox="0 0 24 24"
-      fill="#000"
+      fill="transparent"
       stroke="currentColor"
       strokeWidth="1.8"
       strokeLinecap="round"
